@@ -32,6 +32,7 @@ def process(fname):
         for l in lines:
             if((l[0:2] == '::') & (l not in ignore_passages)):  # it's a new passage
                 nodename = l[2:]
+		print('  ', stripspaces(nodename),';')
             else:
                 if('[[' in l):
                     l2 = l.split('[[')
