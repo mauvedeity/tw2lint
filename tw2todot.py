@@ -6,7 +6,9 @@ from __future__ import print_function
 
 import sys
 
-ignore_passages = ['::StoryTitle', '::StoryIFID[twee2]','::StoryCSS [stylesheet]', '::StoryIncludes', '::Twee2Settings [twee2]]']
+ignore_passages = ['::StoryTitle', '::StoryIFID[twee2]','::StoryCSS [stylesheet]',
+'::StoryIncludes', '::Twee2Settings [twee2]','::Twee2Settings', '::StoryInit', 
+'::dummysection', '::StoryCaption']
 
 def usage():
     print('usage: tw2dot.py <filename.tw2>')
