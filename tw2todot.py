@@ -7,14 +7,13 @@ from __future__ import print_function
 import sys
 
 ignore_passages = ['::StoryTitle', '::StoryIFID[twee2]','::StoryCSS [stylesheet]',
-'::StoryIncludes', '::Twee2Settings [twee2]','::Twee2Settings', '::StoryInit', 
-'::dummysection', '::StoryCaption']
+'::StoryIncludes', '::Twee2Settings [twee2]','::Twee2Settings', '::StoryInit', '::StoryCaption']
 
 def usage():
     print('usage: tw2dot.py <filename.tw2>')
 
 def header():
-    print('digraph G {')
+    print('digraph {')
     print('  rankdir=LR;')
 
 def footer():
@@ -31,10 +30,11 @@ def process(fname):
     with open(fname, 'rt') as f:
         lines = f.read().splitlines()
         nodename = '**none**'
+        print('  graph [name="',lines[1],'"];',sep='')
         for l in lines:
             if((l[0:2] == '::') & (l not in ignore_passages)):  # it's a new passage
                 nodename = l[2:]
-		print('  ', stripspaces(nodename),';')
+                print('  ', stripspaces(nodename),';')
             else:
                 if('[[' in l):
                     l2 = l.split('[[')
