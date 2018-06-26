@@ -31,10 +31,11 @@ def process(fname):
         lines = f.read().splitlines()
         nodename = '**none**'
         print('  graph [name="',lines[1],'"];',sep='')
+	print('  node [style=filled,fillcolor=red,shape=rectangle]; ');
         for l in lines:
             if((l[0:2] == '::') & (l not in ignore_passages)):  # it's a new passage
                 nodename = l[2:]
-                print('  ', stripspaces(nodename),';')
+                print('  ', stripspaces(nodename),'[fillcolor=green];')
             else:
                 if('[[' in l):
                     l2 = l.split('[[')
